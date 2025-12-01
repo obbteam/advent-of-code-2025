@@ -1,0 +1,12 @@
+# CLion and CMake artifacts
+cmake-build-*/
+.idea/
+build/
+bin/
+lib/
+*.swp
+.DS_Store
+
+# Compiled Object files
+*.o
+*.obj
