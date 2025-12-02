@@ -32,7 +32,8 @@ struct Record {
     int day;
     int part;
     long long result;
-    double duration_seconds;
+    std::chrono::steady_clock::time_point start;
+    std::chrono::steady_clock::time_point end;
 };
 
 // 2. Helper to format time (e.g., switches between "ms" and "s")
@@ -53,6 +54,7 @@ inline std::string formatTime(double seconds) {
 
 
 void printMetaData(const Record &rec) {
+    std::chrono::duration<double> elapsed = rec.end - rec.start;
     // Define column widths so Header and Data always match
     const int wYear = 6;
     const int wID = 12; // Enough space for "Day-Part:"
@@ -79,7 +81,7 @@ void printMetaData(const Record &rec) {
             << std::setw(wID) << idString // Now this respects the width!
             << std::setw(wResult) << rec.result
             << std::right
-            << std::setw(wTime) << formatTime(rec.duration_seconds)
+            << std::setw(wTime) << formatTime(elapsed.count())
             << "\n";
 }
 

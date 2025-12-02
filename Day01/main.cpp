@@ -2,9 +2,8 @@
 #include <chrono>
 
 int main() {
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     auto lines = AoC::loadInput("input.txt");
-
 
     int clock = 50, ans = 0;
     for (std::string &line: lines) {
@@ -22,9 +21,7 @@ int main() {
     }
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    std::cout << "Ans: " << ans << std::endl;
-    std::cout << "Run time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<
-            "[ms]" << std::endl;
+    printMetaData(Record(2025, 1, 2, ans, start, end));
 
     return 0;
 }

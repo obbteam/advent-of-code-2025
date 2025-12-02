@@ -9,15 +9,14 @@ long long solve(const std::string &left, const std::string &right);
 std::string MakeDuplicate( const std::string& str, int x );
 
 int main() {
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 
     auto line = AoC::loadInput("input.txt");
-    long long ans = parseInputAndSolve(line[0]);
+    long long result = parseInputAndSolve(line[0]);
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    std::chrono::duration<double> elapsed = end - begin;
-    printMetaData(Record(2025, 2, 2, ans, elapsed.count()));
+    printMetaData(Record(2025, 2, 2, result, start, end));
 
     return 0;
 }
