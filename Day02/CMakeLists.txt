@@ -1,4 +1,6 @@
-add_executable(Day02 main.cpp)
+add_executable(Day02 main.cpp
+        part1/part1.cpp
+        part2/part2.cpp)
 
 # Link the shared utilities
 target_link_libraries(Day02 PUBLIC common)
