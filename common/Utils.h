@@ -53,7 +53,7 @@ inline std::string formatTime(double seconds) {
 }
 
 
-void printMetaData(const Record &rec) {
+inline void printMetaData(const Record &rec) {
     std::chrono::duration<double> elapsed = rec.end - rec.start;
     // Define column widths so Header and Data always match
     const int wYear = 6;
