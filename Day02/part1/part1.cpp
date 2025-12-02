@@ -18,7 +18,6 @@ void Part1::solve() {
 
 long long Part1::findInvalid(const std::string &left, const std::string &right) {
     long long ans = 0;
-    std::unordered_set<long long> seen;
     for (long long i = stoll(left); i <= std::stoll(right); ++i) {
         std::string str = std::to_string(i);
         auto first = str.substr(0, str.length() / 2);
@@ -31,7 +30,6 @@ long long Part1::findInvalid(const std::string &left, const std::string &right) 
 
 
 long long Part1::parseInputAndSolve(const std::string &line) {
-    std::vector<std::pair<int, int> > res;
     std::string left, right;
     bool r = false;
     long long ans = 0;

@@ -14,7 +14,6 @@ void Part2::solve() {
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
     printMetaData(Record(2025, 2, 2, result, start, end));
-
 }
 
 long long Part2::findInvalid(const std::string &left, const std::string &right) {
@@ -46,7 +45,6 @@ std::string Part2::makeDuplicate( const std::string& str, int x )
 }
 
 long long Part2::parseInputAndSolve(const std::string &line) {
-    std::vector<std::pair<int, int> > res;
     std::string left, right;
     bool r = false;
     long long ans = 0;
