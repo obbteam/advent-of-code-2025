@@ -35,9 +35,6 @@ long long Part1::parseAndSolve(std::vector<std::string> &lines) {
             localMax = std::max(localMax, prefix[i] * 10 + sufix[i]);
         }
         result += localMax;
-        std::cout << localMax << std::endl;
-
-
     }
     return result;
 }
