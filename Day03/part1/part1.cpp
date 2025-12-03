@@ -19,22 +19,23 @@ void Part1::solve() {
 long long Part1::parseAndSolve(std::vector<std::string> &lines) {
     long long result = 0;
     for (const auto &line: lines) {
-        std::vector<int> prefix(line.size() + 1, 0);
-        std::vector<int> sufix(line.size() + 1, 0);
-
-        for (int i = 0; i < line.size(); i++) {
-            prefix[i + 1] = std::max(prefix[i], line[i] - '0');
+        char d1 = '0', d2 = '0';
+        int localMaxPos = 0;
+        for (int i = 0; i < line.size() - 1; i++) {
+            if (line[i] > d1) {
+                d1 = line[i];
+                localMaxPos = i;
+            }
         }
 
-        for (int i = line.length() - 1; i >= 0; --i) {
-            sufix[i] = std::max(sufix[i+1], line[i] - '0');
+        for (int i = localMaxPos + 1; i < line.size(); i++) {
+            if (line[i] > d2) {
+                d2 = line[i];
+            }
         }
 
-        int localMax = 0;
-        for (int i = 1; i < prefix.size() - 1; i++) {
-            localMax = std::max(localMax, prefix[i] * 10 + sufix[i]);
-        }
-        result += localMax;
+        result += (d1 - '0') * 10 + (d2 - '0');
     }
+
     return result;
 }
