@@ -17,5 +17,29 @@ void Part1::solve() {
 long long Part1::parseAndSolve(std::vector<std::string> &lines) {
     long long result = 0;
 
+    for (int y = 0; y < lines.size(); y++) {
+        for (int x = 0; x < lines[y].size(); x++) {
+            if (lines[y][x] == '@')
+                result+=checkDirections(x,y,lines);
+        }
+    }
+
+
     return result;
 }
+
+bool Part1::checkDirections(int x, int y, std::vector<std::string> &lines) {
+    int count = 0;
+    for (auto d : directions) {
+        int newX = x + d[0];
+        int newY = y + d[1];
+
+        if (newX >= 0 && newX < lines.size() && newY >= 0 && newY < lines.size()) {
+            if (lines[newY][newX] == '@') {
+                count++;
+            }
+        }
+    }
+
+    return count < 4;
+};

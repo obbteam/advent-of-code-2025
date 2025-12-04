@@ -17,7 +17,7 @@ void Part2::solve() {
 
 
 long long Part2::parseAndSolve(std::vector<std::string> &lines) {
-    int MIN_LENGTH = 12, l = 0, r = 0;
+    int MIN_LENGTH = 12;
     long long result = 0;
 
     for (const auto &line: lines) {
