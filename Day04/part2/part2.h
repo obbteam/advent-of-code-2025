@@ -9,7 +9,7 @@
 
 class Part2 {
 public:
-    void solve();
+    static void solve();
 private:
     static long long parseAndSolve(std::vector<std::string> & lines);
 
