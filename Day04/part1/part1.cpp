@@ -14,7 +14,7 @@ void Part1::solve() {
     printMetaData(Record(2025, 4, 1, result, start, end));
 }
 
-long long Part1::parseAndSolve(std::vector<std::string> &lines) {
+long long Part1::parseAndSolve(const std::vector<std::string> &lines) {
     long long result = 0;
 
     for (int y = 0; y < lines.size(); y++) {
@@ -24,11 +24,10 @@ long long Part1::parseAndSolve(std::vector<std::string> &lines) {
         }
     }
 
-
     return result;
 }
 
-bool Part1::checkDirections(int x, int y, std::vector<std::string> &lines) {
+bool Part1::checkDirections(const int& x, const int& y, const std::vector<std::string> &lines) {
     int count = 0;
     for (auto d : directions) {
         int newX = x + d[0];
@@ -38,8 +37,8 @@ bool Part1::checkDirections(int x, int y, std::vector<std::string> &lines) {
             if (lines[newY][newX] == '@') {
                 count++;
             }
+            if (count >= 4) return false;
         }
     }
-
-    return count < 4;
+    return true;
 };

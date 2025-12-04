@@ -32,7 +32,7 @@ long long Part2::parseAndSolve(std::vector<std::string> &lines) {
             }
         }
         removePaper(toRemove, lines);
-        toRemove.clear();
+        toRemove = {};
 
         if (localCount == 0)
             canRemove = false;
@@ -44,7 +44,7 @@ long long Part2::parseAndSolve(std::vector<std::string> &lines) {
     return result;
 }
 
-bool Part2::checkDirections(int x, int y, std::vector<std::string> &lines) {
+bool Part2::checkDirections(const int& x, const int& y, const std::vector<std::string> &lines) {
     int count = 0;
     for (auto d : directions) {
         int newX = x + d[0];
@@ -54,18 +54,18 @@ bool Part2::checkDirections(int x, int y, std::vector<std::string> &lines) {
             if (lines[newY][newX] == '@') {
                 count++;
             }
+            if (count >= 4) return false;
         }
     }
 
-    return count < 4;
+    return true;
 };
 
 
 
-void Part2::removePaper(std::vector<std::pair<int,int>>& toRemove, std::vector<std::string> &lines) {
+void Part2::removePaper(const std::vector<std::pair<int,int>>& toRemove, std::vector<std::string> &lines) {
     for (auto &[x, y] : toRemove) {
         lines[y][x] = 'x';
     }
-    toRemove.clear();
 };
 

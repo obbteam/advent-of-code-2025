@@ -9,13 +9,13 @@
 
 class Part1 {
 public:
-    void solve();
+    static void solve();
 private:
-    long long parseAndSolve(std::vector<std::string> & lines);
+    static long long parseAndSolve(const std::vector<std::string> & lines);
 
-    bool checkDirections(int x, int y, std::vector<std::string> &lines);
+    static bool checkDirections(const int &x, const int &y, const std::vector<std::string> &lines);
 
-    std::vector<std::vector<int> > directions = {
+    static constexpr int directions[8][2] = {
         {1, 0},
         {1, 1},
         {0, 1},
