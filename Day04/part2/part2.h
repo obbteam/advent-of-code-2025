@@ -12,6 +12,21 @@ public:
     void solve();
 private:
     long long parseAndSolve(std::vector<std::string> & lines);
+
+    bool checkDirections(int x, int y, std::vector<std::string> &lines);
+
+    void removePaper(std::vector<std::pair<int,int>>& toRemove, std::vector<std::string> &lines);
+
+    std::vector<std::vector<int> > directions = {
+        {1, 0},
+        {1, 1},
+        {0, 1},
+        {-1, 1},
+        {-1, 0},
+        {-1, -1},
+        {0, -1},
+        {1, -1}
+    };
 };
 
 
