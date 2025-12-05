@@ -66,7 +66,7 @@ std::vector<std::pair<long, long> > Part1::foldRanges(std::vector<std::pair<long
     std::vector<std::pair<long, long> > result;
     result.push_back(ranges[0]);
     for (int i = 1; i < ranges.size(); ++i) {
-        if (ranges[i].first < result.back().second) {
+        if (ranges[i].first <= result.back().second) {
             result.back().second = std::max(ranges[i].second, result.back().second);
             continue;
         }

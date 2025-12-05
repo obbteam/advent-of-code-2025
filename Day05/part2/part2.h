@@ -12,6 +12,7 @@ public:
     void solve();
 private:
     long long parseAndSolve(std::vector<std::string> & lines);
+    std::vector<std::pair<long, long> > foldRanges(std::vector<std::pair<long, long> > &ranges);
 };
 
 
