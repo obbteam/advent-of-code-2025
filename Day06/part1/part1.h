@@ -13,6 +13,7 @@ public:
 
 private:
     long long parseAndSolve(std::vector<std::string> &lines);
+    static void trimLine(std::string& s);
 };
 
 
