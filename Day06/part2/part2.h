@@ -13,7 +13,7 @@ public:
 
 private:
     long long parseAndSolve(std::vector<std::string> &lines);
-    long long getNumbers(int j, const char& sign, const std::vector<std::string> &lines);
+    long long getNumbers(int j, const char& sign, const std::vector<std::string> &lines, int longestLineSize);
 };
 
 
