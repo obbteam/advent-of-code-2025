@@ -17,5 +17,36 @@ void Part2::solve() {
 long long Part2::parseAndSolve(std::vector<std::string> &lines) {
     long long result = 0;
 
+    for (int i = 0; i < lines[lines.size() - 1].size(); i++) {
+        if (lines[lines.size() - 1][i] == '*' || lines[lines.size() - 1][i] == '+')
+            result+=getNumbers(i, lines[lines.size() - 1][i], lines);
+    }
+
+    return result;
+}
+
+long long Part2::getNumbers(int j, const char& sign, const std::vector<std::string> &lines) {
+    long long result = sign == '+' ? 0 : 1;
+    int nextSignIdx = j+1;
+    const std::string& lastLine = lines.back();
+
+    for (;nextSignIdx < lastLine.size(); nextSignIdx++) {
+        if (lastLine[nextSignIdx] == '*' || lastLine[nextSignIdx] == '+')
+            break;
+    }
+
+    std::string num;
+    for (int k = j; k < nextSignIdx; k++) {
+        for (int i = 0; i < lines.size() - 1; i++) {
+            if (isdigit(lines[i][k]))
+                num += lines[i][k];
+        }
+        if (sign == '+' && !num.empty())
+            result += std::stoll(num);
+        else if (!num.empty())
+            result *= std::stoll(num);
+        num.clear();
+    }
+
     return result;
 }
