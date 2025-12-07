@@ -11,7 +11,6 @@ void Part1::solve() {
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    printLines(lines);
     printMetaData(Record(2025, 7, 1, result, start, end));
 }
 

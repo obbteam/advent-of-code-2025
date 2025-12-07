@@ -13,6 +13,8 @@ public:
 
 private:
     long long parseAndSolve(std::vector<std::string> &lines);
+    long long moveDown(int i, int j, const std::vector<std::string> &lines);
+    static void printLines(const std::vector<std::string> &lines);
 };
 
 
