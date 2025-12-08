@@ -1,9 +1,9 @@
-#include "part2.h"
+#include "part1.h"
 
 #include "../common/Utils.h"
 
 
-void Part2::solve() {
+void Part1::solve() {
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 
     auto lines = AoC::loadInput("input.txt");
@@ -11,10 +11,10 @@ void Part2::solve() {
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    printMetaData(Record(2025, 1, 2, result, start, end));
+    printMetaData(Record(2025, 9, 1, result, start, end));
 }
 
-long long Part2::parseAndSolve(std::vector<std::string> &lines) {
+long long Part1::parseAndSolve(std::vector<std::string> &lines) {
     long long result = 0;
 
     return result;

@@ -11,7 +11,7 @@ void Part2::solve() {
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    printMetaData(Record(2025, 1, 2, result, start, end));
+    printMetaData(Record(2025, 9, 2, result, start, end));
 }
 
 long long Part2::parseAndSolve(std::vector<std::string> &lines) {
