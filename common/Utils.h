@@ -85,4 +85,58 @@ inline void printMetaData(const Record &rec) {
             << "\n";
 }
 
+struct Coordinate {
+    long long x{};
+    long long y{};
+    long long z{};
+
+    Coordinate() = default;
+
+    Coordinate(long long x, long long y, long long z) : x(x), y(y), z(z) {}
+
+    bool operator==(const Coordinate &other) const {
+        return x == other.x && y == other.y && z == other.z;
+    }
+};
+
+
+namespace std {
+    template <>
+    struct hash<Coordinate> {
+        size_t operator()(const Coordinate &c) const {
+            size_t h = 17;
+            h = h * 31 + std::hash<long long>{}(c.x);
+            h = h * 31 + std::hash<long long>{}(c.y);
+            h = h * 31 + std::hash<long long>{}(c.z);
+            return h;
+        }
+    };
+}
+
+
+struct CoordinatesDistance {
+    long double distance;
+    Coordinate from;
+    Coordinate to;
+
+    bool operator<(const CoordinatesDistance &other) const {
+        return distance > other.distance;
+    }
+
+    void print() const {
+        std::cout << "(" << from.x << ", " << from.y << ", " << from.z << ")\n";
+        std::cout << "(" << to.x << ", " << to.y << ", " << to.z << ")\n";
+        std::cout << "[" << distance << "]\n\n";
+    }
+};
+
+inline long double calculateDistance(const Coordinate &a, const Coordinate &b) {
+    long double dx = a.x - b.x;
+    long double dy = a.y - b.y;
+    long double dz = a.z - b.z;
+
+    return sqrtl(dx * dx + dy * dy + dz * dz);
+};
+
+
 #endif
