@@ -15,7 +15,25 @@ void Part1::solve() {
 }
 
 long long Part1::parseAndSolve(std::vector<std::string> &lines) {
-    long long result = 0;
+    std::vector<Point> points;
+    points.reserve(lines.size());
 
-    return result;
+    // make points
+    for (auto &line: lines) {
+        auto idx = line.find(',');
+        points.emplace_back(
+            std::stoi(line.substr(0, idx)),
+            std::stoi(line.substr(idx + 1))
+        );
+    }
+
+    long long maxArea = 0;
+    // find maxArea
+    for (int i = 0; i < points.size(); ++i) {
+        for (int j = i + 1; j < points.size(); ++j) {
+            maxArea = std::max(maxArea, findArea(points[i], points[j]));
+        }
+    }
+
+    return maxArea;
 }

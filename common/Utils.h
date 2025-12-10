@@ -113,6 +113,14 @@ namespace std {
     };
 }
 
+struct Point {
+    long long x;
+    long long y;
+};
+
+ static long long findArea(Point &a, Point &b) {
+    return (std::abs(a.x - b.x) + 1 ) *  (std::abs(a.y - b.y) + 1);
+}
 
 struct CoordinatesDistance {
     long double distance;

@@ -15,7 +15,35 @@ void Part2::solve() {
 }
 
 long long Part2::parseAndSolve(std::vector<std::string> &lines) {
-    long long result = 0;
+    std::vector<Point> points;
+    points.reserve(lines.size());
 
-    return result;
+    // make points
+    for (auto &line: lines) {
+        auto idx = line.find(',');
+        points.emplace_back(
+            std::stoi(line.substr(0, idx)),
+            std::stoi(line.substr(idx + 1))
+        );
+    }
+
+    long long maxArea = 0;
+    // find maxArea
+    for (int i = 0; i < points.size(); ++i) {
+        for (int j = i + 1; j < points.size(); ++j) {
+            maxArea = std::max(maxArea, findArea(points[i], points[j]));
+        }
+    }
+
+    long long maxX = 0, maxY = 0, minX = INT_MAX, minY = INT_MAX;
+    for (auto &p : points) {
+        maxX = std::max(maxX, p.x);
+        maxY = std::max(maxY, p.y);
+        minX = std::min(minX, p.x);
+        minY = std::min(minY, p.y);
+    }
+
+    std::cout << maxX << " " <<  maxY << " " << minX << " " << minY << std::endl;
+
+    return maxArea;
 }
