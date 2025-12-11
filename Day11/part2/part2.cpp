@@ -48,18 +48,16 @@ void Part2::connectNodes(const std::string &from, const std::string &str,
 }
 
 
-long long Part2::countNumPathsFromToOut(
-    std::unordered_map<std::string, std::unordered_set<std::string> > &nodes,
-    bool seenFft,
-    bool seenDac,
-    const std::string &from,
-    std::unordered_map<std::string, long long> &numPathsFromToOut) {
+long long Part2::countNumPathsFromToOut(std::unordered_map<std::string, std::unordered_set<std::string> > &nodes,
+                                        bool seenFft, bool seenDac, const std::string &from,
+                                        std::unordered_map<std::string, long long> &numPathsFromToOut) {
     if (from == "fft") seenFft = true;
     if (from == "dac") seenDac = true;
 
-    long long totalPaths = 0;
     auto key = makeKey(from, seenFft, seenDac);
     if (numPathsFromToOut.contains(key)) return numPathsFromToOut[key];
+
+    long long totalPaths = 0;
     if (nodes[from].contains("out") && seenFft && seenDac) {
         totalPaths += 1;
     }
@@ -72,6 +70,6 @@ long long Part2::countNumPathsFromToOut(
     return numPathsFromToOut[key] = totalPaths;
 }
 
-std::string Part2::makeKey(const std::string& from, bool seenFft, bool seenDac) {
-    return from + "_" + std::to_string(seenFft) + "_" +std::to_string(seenDac);
+std::string Part2::makeKey(const std::string &from, bool seenFft, bool seenDac) {
+    return from + "_" + std::to_string(seenFft) + "_" + std::to_string(seenDac);
 }
