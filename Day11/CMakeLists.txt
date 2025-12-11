@@ -1,9 +1,9 @@
-add_executable(template main.cpp
+add_executable(Day11 main.cpp
         part1/part1.cpp
         part2/part2.cpp)
 
 # Link the shared utilities
-target_link_libraries(template PUBLIC common)
+target_link_libraries(Day11 PUBLIC common)
 
 # Optional: Copy input.txt to the build directory automatically
 configure_file(input.txt input.txt COPYONLY)
